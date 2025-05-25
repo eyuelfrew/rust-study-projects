@@ -20,3 +20,6 @@ Thumbs.db
 *.bak
 *.orig
 .nvim/
+target/
+**/*.rs.bk
+*.log

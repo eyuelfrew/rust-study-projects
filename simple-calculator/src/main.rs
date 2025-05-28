@@ -21,11 +21,6 @@ fn main() {
     let sum = num1 + num2;
 
     // and print the result in the terminal/cmd 
-    println!("The sum is : {}", sum);
-
-
-   
-    
-
+    println!("The sum is : {}", sum); 
 }
 

@@ -1,11 +1,6 @@
 # Ignore target directories in all subprojects
 **/target/
 
-# Ignore Cargo.lock files if you want to keep repo clean
-# (or keep them if you want reproducible builds)
-Cargo.lock
-**/Cargo.lock
-
 # Editor / OS
 .DS_Store
 Thumbs.db

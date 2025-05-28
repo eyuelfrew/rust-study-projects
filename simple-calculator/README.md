@@ -1,142 +1,121 @@
+## Simple Calculator Explanation
 
-🦀 Rustic Calculator: Crunch Numbers with Style! 🚀
-Hey, Rustacean! Welcome to the Rustic Calculator, a lean and mean Rust program that adds two numbers with a wink and a 🦀. This repo is your ticket to mastering Rust’s input/output and type magic while keeping things dead simple. Whether you’re a newbie or a pro, this calculator’s got charm and smarts. Dive into the code breakdown below to see how it ticks, line by line, and make your GitHub repo pop! 🌟
-What’s the Deal? 🤙
-This calculator grabs two numbers you type in the terminal, adds them up, and flashes the result. It’s like a quick math buddy that never crashes, thanks to Rust’s type safety. Built on Ubuntu? You’re set to roll. Let’s unpack the code and see why it’s so darn cool.
-Spin It Up! ⚡
-What You Need
+This Rust program is an interactive command-line calculator that allows users to add two numbers together. Here is a breakdown of how the code works, step by step:
 
-Rust: Check it’s ready:rustc --version
-cargo --version
+---
 
-Missing Rust? Grab it:curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source $HOME/.cargo/env
+### 1. Importing the Standard IO Library
 
+```rust
+use std::io;
+```
+- This line imports Rust's built-in input/output library, which allows the program to read user input from the terminal.
 
-Terminal: Any Ubuntu terminal (GNOME, Kitty, you name it).
-Code: The main.rs in this repo (you’ve got it!).
+---
 
-How to Rock It
+### 2. Main Function
 
-Clone or create the repo:cargo new rustic-calculator
-cd rustic-calculator
+```rust
+fn main() {
+    // ... code ...
+}
+```
+- The `main` function is the entry point of every Rust program. The code inside `main` will be executed when you run the program.
 
+---
 
-Ensure src/main.rs has the calculator code (two inputs, one sum).
-Run it:cargo run
+### 3. Welcome Message
 
+```rust
+println!("🦀 Welcome to the simpleest simple calculator! ");
+```
+- Prints a welcome message (with a crab emoji, Rust's mascot) to the terminal.
 
-Type two numbers (like 6.9, 4.20), hit Enter, and boom—sum’s up! 😎
+---
 
-Code Breakdown: Line-by-Line Swagger 🎸
-Here’s the lowdown on the 18 lines in main.rs, explaining what each does without pasting the code. It’s like a backstage pass to Rust’s magic.
+### 4. Prompt for the First Number
 
-Import I/O vibes 🎧
+```rust
+println!("Enter the first number: ");
+```
+- Asks the user to enter the first number.
 
-Brings in std::io for terminal input/output. Think of it as Rust’s mic to hear your numbers.
+---
 
+### 5. Read and Parse the First Number
 
-Start the main show 🎤
+```rust
+let mut input1 = String::new();
+io::stdin().read_line(&mut input1).expect("Faild to read line(input)!");
+let num1: f64 = input1.trim().parse().expect("Please enter a number");
+```
+- `let mut input1 = String::new();` creates a mutable String variable to store the user's input.
+- `io::stdin().read_line(&mut input1)` waits for the user to type a line and press Enter, then stores that input in `input1`.
+    - `.expect("Faild to read line(input)!")` will display an error message if reading input fails.
+- `input1.trim().parse()` removes any whitespace and tries to convert the input to a floating-point number (`f64`).
+    - `.expect("Please enter a number")` will display an error if parsing fails (i.e., if the user didn't enter a valid number).
 
-Kicks off the main function, Rust’s entry point. It’s where the calculator party begins.
+---
 
+### 6. Prompt for the Second Number
 
-Drop a crabby hello 🦀
+```rust
+println!("Enter second number: ");
+```
+- Asks the user for the second number.
 
-Prints a welcome message with a Rust crab emoji. Sets the mood like a neon sign.
+---
 
+### 7. Read and Parse the Second Number
 
-Prompt for number one 🥇
+```rust
+let mut input2 = String::new();
+io::stdin().read_line(&mut input2).expect("Faild to read line(input)!");
+let num2: f64 = input2.trim().parse().expect("Please enter a number!");
+```
+- Works exactly like the first number:
+    - Creates a new mutable String for input.
+    - Reads the line from the user.
+    - Trims whitespace and parses it into a `f64` number.
 
-Asks you to type the first number. It’s Rust saying, “Gimme a digit!”
+---
 
+### 8. Perform Addition
 
-Set up a string bucket 📦
+```rust
+let sum = num1 + num2;
+```
+- Adds the two numbers together and stores the result in the variable `sum`.
 
-Creates a mutable String to catch your first input. Mutable ‘cause Rust’s picky about changes.
+---
 
+### 9. Output the Result
 
-Snag the first input 📥
+```rust
+println!("The sum is : {}", sum); 
+```
+- Prints the result of the addition to the terminal.
 
-Reads your typed line (number + Enter) into the string. Panics with “Failed” (oops, typo “Faild”) if the read flops.
+---
 
-
-Turn text into a number 🔢
-
-Trims the newline, parses the string into a 64-bit float (f64), and yells “Enter a number!” if you type junk (like “pizza”).
-
-
-Note the next step 📝
-
-A comment saying we’re grabbing the second number. Keeps things clear.
-
-
-Comment on number two 🥈
-
-Another comment noting the second number’s input process is a repeat. Rust loves clarity.
-
-
-Ask for number two 🎙️
-
-Prompts for the second number. Same deal as the first—type and Enter.
-
-
-Another string bucket 🗑️
-
-Sets up a second mutable String for the next input. Rust’s all about fresh containers.
-
-
-Grab the second input 📬
-
-Reads the second line into the string, with the same “Faild” panic if it breaks.
-
-
-Parse the second number 🧮
-
-Trims and parses into another f64, panicking if it’s not a number. Ready for math!
-
-
-Plan the math ➕
-
-A comment (with a “know” typo, should be “now”) saying we’re adding. It’s Rust’s “let’s do this” moment.
-
-
-Add ‘em up 🧑‍🔬
-
-Adds the two f64 numbers into a result. Clean and simple, Rust-style.
-
-
-Announce the reveal 📢
-
-A comment noting we’ll print the result. It’s like hyping the finale.
-
-
-Show the sum 🎉
-
-Prints the result using a placeholder for the sum. It’s the “ta-da!” of your calc.
-
-
-Curtain call 🎭
-
-Closes the main function. Rust’s done, and you’ve got your answer.
-
-
-
-Why It’s Lit 🔥
-
-Rust’s Edge: Type-safe, crash-proof, and fast—your calculator’s a tank!
-Learn Fast: Grok strings, parsing, and I/O, leveling up for your Rust API dreams (like that Tasks CRUD, May 28, 2025).
-Hack It: Add multiply, divide, or a fancy menu—make it yours!
-
-Rust Upgrades 🛠️
-
-Fix Typos: Tweak “Faild” to “Failed,” “know” to “now,” “simpleest” to “simplest” for pro polish.
-Go Wild: Add -, *, / with a switch. Want a snippet? Holler!
-Smooth Errors: Swap expect for match to handle bad inputs like a champ.
-
-Jump In! 🤝
-Fork this repo, tweak the calc, or toss in a PR. Got a crazy idea? Open an issue. Let’s keep the Rust fire burning! 🦀
-License
-MIT—hack it, share it, love it. See LICENSE.
-
-Crafted by a Rust rookie with big vibes. Keep coding, keep crabbing! 🦀
+## Example Run
+
+```
+🦀 Welcome to the simpleest simple calculator!
+Enter the first number:
+5.4
+Enter second number:
+2.3
+The sum is : 7.7
+```
+
+---
+
+## Notes
+
+- This calculator currently only supports addition of two numbers.
+- The program expects valid numerical input. If a user enters something that is not a number, the program will display an error and exit.
+- All input is read as strings and then parsed to floating-point numbers (`f64`) for calculation, which allows for both integer and decimal numbers.
+- The code uses basic Rust features suitable for beginners.
+
+---
